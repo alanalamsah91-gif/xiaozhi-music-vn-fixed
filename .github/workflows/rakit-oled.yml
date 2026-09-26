@@ -1,0 +1,30 @@
+name: Build XiaoZhi OLED
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    name: Build Firmware OLED 0.96
+    runs-on: ubuntu-latest
+    container:
+      image: espressif/idf:release-v5.4
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Build bread-compact-wifi
+        shell: bash
+        run: |
+          cd xiaozhi-esp32-musicVN
+          source $IDF_PATH/export.sh
+          python scripts/release.py bread-compact-wifi --name oled_096
+
+      - name: Upload Binary Firmware
+        uses: actions/upload-artifact@v4
+        with:
+          name: firmware-xiaozhi-oled-096
+          path: xiaozhi-esp32-musicVN/build/merged-binary.bin
