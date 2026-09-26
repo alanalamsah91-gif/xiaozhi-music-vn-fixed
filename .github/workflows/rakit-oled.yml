@@ -29,4 +29,8 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: firmware-xiaozhi-oled-128x64
-          path: xiaozhi-esp32-musicVN/build/merged-binary.bin
+          path: |
+            xiaozhi-esp32-musicVN/build/xiaozhi.bin
+            xiaozhi-esp32-musicVN/build/bootloader/bootloader.bin
+            xiaozhi-esp32-musicVN/build/partition_table/partition-table.bin
+            xiaozhi-esp32-musicVN/build/merged-binary.bin
