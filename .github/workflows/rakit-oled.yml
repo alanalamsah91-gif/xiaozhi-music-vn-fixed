@@ -16,15 +16,15 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Build bread-compact-wifi
+      - name: Build bread-compact-wifi-128x64
         shell: bash
         run: |
           cd xiaozhi-esp32-musicVN
           source $IDF_PATH/export.sh
-          python scripts/release.py bread-compact-wifi --name oled_096
+          python scripts/release.py bread-compact-wifi --name bread-compact-wifi-128x64
 
       - name: Upload Binary Firmware
         uses: actions/upload-artifact@v4
         with:
-          name: firmware-xiaozhi-oled-096
+          name: firmware-xiaozhi-oled-128x64
           path: xiaozhi-esp32-musicVN/build/merged-binary.bin
